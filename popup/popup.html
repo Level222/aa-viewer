@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+  <style id="font-face"></style>
+</head>
+<body>
+  <div>
+    <pre id="text-output"></pre>
+    <div id="image-output"></div>
+  </div>
+  <div id="footer">
+    <div>
+      <select id="font" title="フォント"></select>
+    </div>
+    <div>
+      <input type="checkbox" id="page-font"><label for="page-font" title="全体に適用/解除">
+        <svg id="icon-add" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="arcs"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M12 18v-6M9 15h6"/></svg>
+        <svg id="icon-remove" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="arcs"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M9 15h6"/></svg>
+      </label>
+    </div>
+  </div>
+  <script src="/library/dom-to-image.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
