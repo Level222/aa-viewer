@@ -1,0 +1,70 @@
+body {
+  width: 300px;
+  padding: 0;
+  margin: 0;
+}
+
+#text-output {
+  font-family: "_current_aahub_font";
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px;
+  margin: 0;
+  overflow: auto;
+  width: max-content;
+}
+
+#image-output {
+  color: #f00;
+}
+
+#image-output img {
+  display: block;
+  width: 100%;
+}
+
+#footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #6733d3;
+  color: #fff;
+}
+
+#footer > div {
+  display: flex;
+}
+
+#footer > div > * {
+  appearance: none;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+}
+
+#footer > div > *:hover {
+  color: #6733d3;
+  background-color: #fff;
+}
+
+#footer > div > *:hover > svg {
+  stroke: #6733d3;
+}
+
+#footer #page-font, #page-font:checked + label #icon-add, #page-font:not(:checked) + label #icon-remove {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
