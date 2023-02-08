@@ -50,6 +50,7 @@
   ];
 
   const targetTab = (await chrome.tabs.query({currentWindow: true, active: true}))[0];
+  // Return if the URL scheme is not supported.
   if (!/^(https?|file|localhost):/.test(targetTab.url)) {
     document.write(`このページではお使いいただけません`);
     return;
@@ -101,6 +102,7 @@
     func: () => getSelection().toString()
   }))[0].result;
 
+  // Set target AA.
   textOutputArea.textContent = await getSelectedText() ||
 ` ∧＿∧　　／￣￣￣￣￣
 （　´∀｀）＜　選択シテナイカモナー
@@ -140,21 +142,23 @@
     `${fontFace} * { font-family: "_current_aahub_font" !important; }`
   );
 
-  const addFontPage = () => chrome.scripting.insertCSS({
+  const addFontToPage = () => chrome.scripting.insertCSS({
     target: {tabId: targetTabId},
     css: pageCSSs[currentFont]
   });
 
-  const removeFontPage = css => chrome.scripting.removeCSS({
+  const removeFontFromPage = css => chrome.scripting.removeCSS({
     target: {tabId: targetTabId},
     css: css
   });
 
-  const removeAllFontPage = () => Promise.all(Object.values(pageCSSs).map(css => removeFontPage(css)));
+  const removeAllFontsFromPage = () => Promise.all(
+    Object.values(pageCSSs).map(css => removeFontFromPage(css))
+  );
 
   pageFontCheckbox.addEventListener("change", async () => {
-    await removeAllFontPage();
-    if (pageFontCheckbox.checked) await addFontPage();
+    await removeAllFontsFromPage();
+    if (pageFontCheckbox.checked) await addFontToPage();
   });
 
   const setFont = async () => {
@@ -162,8 +166,8 @@
     chrome.storage.local.set({font: currentFont});
     setImage();
     pageFontCheckbox.checked = true;
-    await removeAllFontPage();
-    await addFontPage();
+    await removeAllFontsFromPage();
+    await addFontToPage();
   };
 
   setFont();
