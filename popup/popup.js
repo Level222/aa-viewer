@@ -90,7 +90,7 @@
 
   const fontFaces = Object.fromEntries(FONTS.map(({fontName, fileName}) => [fontName,
 `@font-face {
-  font-family: "_current_aahub_font";
+  font-family: "__current_aa_font";
   src: url("${chrome.runtime.getURL(`fonts/${fileName}`)}") format("woff2");
   font-display: swap;
 }`
@@ -139,7 +139,7 @@
 
 
   const pageCSSs = ObjectMap(fontFaces, fontFace =>
-    `${fontFace} * { font-family: "_current_aahub_font" !important; }`
+    `${fontFace} * { font-family: "__current_aa_font" !important; }`
   );
 
   const addFontToPage = () => chrome.scripting.insertCSS({
