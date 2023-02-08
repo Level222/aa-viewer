@@ -61,6 +61,18 @@ body {
   stroke: #6733d3;
 }
 
+#download.disabled {
+  pointer-events: none;
+}
+
+#download.disabled > svg {
+  stroke: #888;
+}
+
+a[download] {
+  cursor: default;
+}
+
 #footer #page-font, #page-font:checked + label #icon-add, #page-font:not(:checked) + label #icon-remove {
   display: none;
 }

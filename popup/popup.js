@@ -63,6 +63,7 @@
         imageOutputArea = document.querySelector("#image-output"),
         fontFaceStyle = document.querySelector("#font-face"),
         fontSelect = document.querySelector("#font"),
+        downloadAnchor = document.querySelector("#download"),
         pageFontCheckbox = document.querySelector("#page-font");
 
   const formatBytes = bytes => {
@@ -111,19 +112,21 @@
     fontFaceStyle.textContent = fontFaces[currentFont];
     textOutputArea.classList.remove("hidden");
     imageOutputArea.classList.add("hidden");
+    downloadAnchor.classList.add("disabled");
 
     domtoimage.toPng(textOutputArea)
       .then(src => {
         if (src === "data:,") throw "Empty DataURL";
         const img = new Image();
         img.src = src;
-        const downloadAnchor = document.createElement("a");
         downloadAnchor.href = src;
-        downloadAnchor.download = "aa-image";
-        downloadAnchor.append(img);
-        return downloadAnchor;
+        downloadAnchor.classList.remove("disabled");
+        return img;
       })
-      .catch(() => `画像化に失敗しました`)
+      .catch(() => {
+        downloadAnchor.removeAttribute("href");
+        return `画像化に失敗しました`;
+      })
       .then(newImage => {
         imageOutputArea.replaceChildren(newImage);
         textOutputArea.classList.add("hidden");
