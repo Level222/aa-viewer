@@ -75,11 +75,22 @@
     return `${n.toFixed(1)}${prefixes.charAt(i - 2)}B`;
   };
 
+  const resizeSelect = select => {
+    const options = [...select.options];
+    options.forEach(option => {
+      if (!option.selected) option.remove();
+    });
+    select.style.width = "auto";
+    select.style.width = `${select.offsetWidth}px`;
+    select.replaceChildren(...options);
+  };
+
   // Set font selector.
   FONTS.forEach(({fontName, size}) => {
     fontSelect.add(new Option(`${fontName}(${formatBytes(size)})`, fontName));
   });
   fontSelect.value = currentFont;
+  resizeSelect(fontSelect);
 
 
 
@@ -171,5 +182,8 @@
   };
 
   setFont();
-  fontSelect.addEventListener("change", setFont);
+  fontSelect.addEventListener("change", () => {
+    setFont();
+    resizeSelect(fontSelect);
+  });
 })();
