@@ -1,7 +1,53 @@
 (async () => {
   "use strict";
 
-  const fonts = await (await fetch("/fonts.json")).json();
+  const FONTS = [
+    {
+      fontName: "aahub",
+      size: 1365864,
+      fileName: "aahub.woff2"
+    },
+    {
+      fontName: "aahub_light",
+      size: 44960,
+      fileName: "aahub_light.woff2"
+    },
+    {
+      fontName: "aahub_light4",
+      size: 172104,
+      fileName: "aahub_light4.woff2"
+    },
+    {
+      fontName: "monapo",
+      size: 1340528,
+      fileName: "monapo.woff2"
+    },
+    {
+      fontName: "Saitamaar",
+      size: 407684,
+      fileName: "Saitamaar.woff2"
+    },
+    {
+      fontName: "saitamaar_light",
+      size: 74832,
+      fileName: "saitamaar_light.woff2"
+    },
+    {
+      fontName: "RobotoJAA-regular",
+      size: 2245584,
+      fileName: "RobotoJAA-regular.woff2"
+    },
+    {
+      fontName: "RobotoJAA-medium",
+      size: 2312276,
+      fileName: "RobotoJAA-medium.woff2"
+    },
+    {
+      fontName: "monaya",
+      size: 1039404,
+      fileName: "monaya.woff2"
+    }
+  ];
 
   const targetTab = (await chrome.tabs.query({currentWindow: true, active: true}))[0];
   if (!/^(https?|file|localhost):/.test(targetTab.url)) {
@@ -27,8 +73,9 @@
     return `${n.toFixed(1)}${prefixes.charAt(i - 2)}B`;
   };
 
-  fonts.forEach(({name, size}) => {
-    fontSelect.add(new Option(`${name}(${formatBytes(size)})`, name));
+  // Set font selector.
+  FONTS.forEach(({fontName, size}) => {
+    fontSelect.add(new Option(`${fontName}(${formatBytes(size)})`, fontName));
   });
   fontSelect.value = currentFont;
 
@@ -39,10 +86,10 @@
     Object.entries(obj).map(([key, value]) => [key, callback(value, key, obj)])
   );
 
-  const fontFaces = Object.fromEntries(fonts.map(({name, base64}) => [name,
+  const fontFaces = Object.fromEntries(FONTS.map(({fontName, fileName}) => [fontName,
 `@font-face {
   font-family: "_current_aahub_font";
-  src: url("data:font/woff2;base64,${base64}") format("woff2");
+  src: url("${chrome.runtime.getURL(`fonts/${fileName}`)}") format("woff2");
   font-display: swap;
 }`
   ]));
