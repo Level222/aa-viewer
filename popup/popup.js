@@ -86,9 +86,9 @@
   };
 
   // Set font selector.
-  FONTS.forEach(({fontName, size}) => {
-    fontSelect.add(new Option(`${fontName}(${formatBytes(size)})`, fontName));
-  });
+  fontSelect.append(...FONTS.map(
+    ({fontName, size}) => new Option(`${fontName}(${formatBytes(size)})`, fontName)
+  ));
   fontSelect.value = currentFont;
   resizeSelect(fontSelect);
 
