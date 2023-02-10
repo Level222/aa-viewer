@@ -49,7 +49,7 @@
     }
   ];
 
-  const {autoInsertList = [], font: initialFont} = await chrome.storage.local.get();
+  const {autoInsertList, currentFont: initialFont} = await chrome.storage.local.get();
 
   console.log(autoInsertList);
 
