@@ -23,14 +23,9 @@
       fileName: "monapo.woff2"
     },
     {
-      fontName: "Saitamaar",
-      size: 407684,
-      fileName: "Saitamaar.woff2"
-    },
-    {
-      fontName: "saitamaar_light",
-      size: 74832,
-      fileName: "saitamaar_light.woff2"
+      fontName: "monaya",
+      size: 1025584,
+      fileName: "monaya.woff2"
     },
     {
       fontName: "RobotoJAA-regular",
@@ -43,9 +38,24 @@
       fileName: "RobotoJAA-medium.woff2"
     },
     {
-      fontName: "monaya",
-      size: 1039404,
-      fileName: "monaya.woff2"
+      fontName: "Saitamaar",
+      size: 407684,
+      fileName: "Saitamaar.woff2"
+    },
+    {
+      fontName: "saitamaar_light",
+      size: 74832,
+      fileName: "saitamaar_light.woff2"
+    },
+    {
+      fontName: "textar",
+      size: 1678592,
+      fileName: "textar.woff2"
+    },
+    {
+      fontName: "textar-min",
+      size: 762260,
+      fileName: "textar-min.woff2"
     }
   ];
 
