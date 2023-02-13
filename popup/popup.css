@@ -33,7 +33,7 @@ body {
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
-  background-color: #6733d3;
+  background-color: #1ba;
   color: #fff;
 }
 
@@ -55,12 +55,12 @@ body {
 }
 
 #footer > div > *:hover {
-  color: #6733d3;
+  color: #1ba;
   background-color: #fff;
 }
 
 #footer > div > *:hover > svg {
-  stroke: #6733d3;
+  stroke: currentColor;
 }
 
 #download.disabled {
