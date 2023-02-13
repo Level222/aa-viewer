@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AAびゅーあー",
   "version": "1.0.0",
-  "description": "AA（アスキーアート）用のフォントをwebページに適用したり、画像化したものをダウンロードしたりできます。",
+  "description": "AA用フォントを手動・自動でwebページに適用したり、画像化したものをダウンロードしたりできます。",
   "icons": {
     "16": "icons/icon-16.png",
     "48": "icons/icon-48.png",
@@ -35,5 +35,15 @@
 
   "action": {
     "default_popup": "popup/popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ]
 }
